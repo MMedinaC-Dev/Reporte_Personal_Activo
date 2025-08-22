@@ -1,0 +1,24 @@
+{
+  "generationParameters": {
+    "generationDate": "Tue Jul 15 2025 21:03:22 GMT+0000 (Coordinated Universal Time)",
+    "generatorPlatform": "SAP Business Application Studio",
+    "serviceType": "SAP System (ABAP On Premise)",
+    "metadataFilename": "",
+    "serviceUrl": "http://s4hdev:8080/sap/opu/odata/sap/ZHX_REPORTE_OPERACIONES_SRV",
+    "appName": "zhx_reporte_operaciones",
+    "appTitle": "Reporte Personal Activo",
+    "appDescription": "",
+    "appNamespace": "zhx_reporte_operaciones",
+    "ui5Theme": "sap_horizon",
+    "ui5Version": "1.108.31",
+    "enableCodeAssist": false,
+    "enableEslint": false,
+    "enableTypeScript": false,
+    "showMockDataInfo": true,
+    "generatorVersion": "1.18.2",
+    "template": "Basic V2",
+    "generatorName": "SAP Fiori Application Generator",
+    "entityRelatedConfig": [],
+    "launchText": "In order to launch the generated app, simply run the following from the generated app root folder:\n\n```\n    npm start\n```"
+  }
+}

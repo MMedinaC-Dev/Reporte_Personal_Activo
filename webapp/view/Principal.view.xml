@@ -1,0 +1,210 @@
+<mvc:View 
+    controllerName="zhxreporteoperaciones.zhxreporteoperaciones.controller.Principal"    
+    xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:sfb="sap.ui.comp.smartfilterbar"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m"
+    xmlns:semantic="sap.f.semantic"
+    xmlns:formatter="zhxreporteoperaciones.zhxreporteoperaciones.model.formatter">
+
+    <semantic:SemanticPage 
+        id = "mySemanticPage"
+        headerPinnable="true"
+        toggleHeaderOnTitleClick="true"
+        preserveHeaderStateOnScroll="false"
+        titleAreaShrinkRatio="1:1.6:1.6"
+        headerExpanded="true">
+
+        <semantic:titleHeading>
+            <Title id="_IDGenTitle1" text = "Reporte Personal Activo"></Title>
+        </semantic:titleHeading>
+
+        <semantic:headerContent>
+
+            <fb:FilterBar
+                id = "_IDGenFilterBar1"
+                reset="onReset"
+                search="onSearch"
+                showRestoreButton="true">
+            
+                <fb:filterGroupItems>
+
+                    <!--<fb:FilterGroupItem 
+                        id="_IDGenFilterGroupItem1"
+                        groupName="G1"
+                        groupTitle="Filtros"
+                        name="A1"
+                        label="N°Per"
+                        labelTooltip="N°Per"
+                        visibleInFilterBar="true">        
+                        <fb:control> 
+                            <Input id = "f_pernr" ></Input>
+                        </fb:control>
+                    </fb:FilterGroupItem>-->
+
+                    <fb:FilterGroupItem 
+                        id="_IDGenFilterGroupItem2"
+                        groupName="G2"
+                        groupTitle="Filtros"
+                        name="A2"
+                        label="Rut "
+                        labelTooltip="Rut"
+                        visibleInFilterBar="true">        
+                        <fb:control> 
+                            <Input id = "f_rut" ></Input>
+                        </fb:control>
+                    </fb:FilterGroupItem>
+                    
+                    <fb:FilterGroupItem 
+                        id="_IDGenFilterGroupItem3"
+                        groupName="G2"
+                        groupTitle="Filtros"
+                        name="A3"
+                        label="Tipo Contrato "
+                        labelTooltip="Tipo Contrato"
+                        visibleInFilterBar="true">        
+                        <fb:control> 
+                            <Select id="f_tipocontrato" change="onTipoContratoChange">
+                                <items>
+                                    <core:Item id = "BLANK"   key=""     text=""           />
+                                    <core:Item id = "INDEF"   key="Z1"   text="Indefinido" />
+                                    <core:Item id = "FIJO"    key="Z2"   text="Plazo Fijo" />
+                                    <core:Item id = "PROR"    key="Z4"   text="Prórroga"   />
+                                </items>
+                            </Select>
+                        </fb:control>
+                    </fb:FilterGroupItem>
+                    
+                    <fb:FilterGroupItem 
+                        id="_IDGenFilterGroupItem4"
+                        groupName="G2"
+                        groupTitle="Filtros"
+                        name="A4"
+                        label="Tipo Profesional"
+                        labelTooltip="T. Profe"
+                        visibleInFilterBar="true">        
+                        <fb:control> 
+                             <Select id="f_tipoprofesional" change="onTipoProfesionalChange">
+                                <items>
+                                    <core:Item id = "BLANK2" key=""     text="" />
+                                    <core:Item id = "JORNA"  key="ZA"   text="Administrativo" />
+                                    <core:Item id = "HONO"   key="ZH"   text="Honorario" />
+                                </items>
+                            </Select>
+                        </fb:control>
+                    </fb:FilterGroupItem>
+                
+                </fb:filterGroupItems>
+            
+            </fb:FilterBar>
+
+        </semantic:headerContent>
+        
+        <semantic:content>
+            <Table 
+                id = "Listado"
+                items = "{ path: 'Listado>/results', sorter: { path: 'Pernr'}}"
+                growing="true"
+                growingScrollToLoad="true"
+                width="auto"
+                noDataText="Sin Información."
+                backgroundDesign="Solid"
+                fixedLayout="false"
+                class="sapUiResponsiveMargin">
+
+                <headerToolbar>
+                    <OverflowToolbar id ="_IDGenOverflowToolbar1">
+                        <content>
+                            <Title id = "titleTable" text = "N° Registros (0)"/>
+                            <ToolbarSpacer id="_IDGenToolbarSpace1"/>
+                            <Button 
+                                id="_IDGenButton1" 
+                                type="Ghost" 
+                                text="Exportar" 
+                                press="onExcel" 
+                                icon="sap-icon://excel-attachment"/>
+                        </content>
+                    </OverflowToolbar>
+                </headerToolbar>
+
+                <items>
+                    <ColumnListItem 
+                        id = "ColumnListItem1" 
+                        type = "Navigation" 
+                        press = "onPresLine">
+                        <cells>
+                            <ObjectIdentifier 
+                                id = "ObjectIdentifier0"
+                                text = "{path : 'Listado>Rut', formatter: '.formatter.formatearRutSinPuntos'}"
+                            ></ObjectIdentifier>
+                        </cells>
+                        <cells>
+                            <ObjectIdentifier id = "ObjectIdentifier1" text = "{Listado>Nombre}"></ObjectIdentifier>
+                        </cells>
+                        <cells>
+                            <ObjectIdentifier id = "ObjectIdentifier2" text = "{Listado>TipoContrato}"></ObjectIdentifier>
+                        </cells>
+                        <cells>
+                            <ObjectIdentifier id = "ObjectIdentifier3" text = "{Listado>TipoProfesional}"></ObjectIdentifier>
+                        </cells>
+                        <cells>
+                            <ObjectIdentifier 
+                                id = "ObjectIdentifier4" 
+                                text="{ path: 'Listado>FechaContratacion', formatter: '.formatter.formatDateToDDMMYYYY'}"></ObjectIdentifier>
+                        </cells>
+                        <cells>
+                            <ObjectIdentifier id = "ObjectIdentifier5" text = "{Listado>Antiguedad}"></ObjectIdentifier>
+                        </cells>
+                        <cells>
+                            <ObjectIdentifier id = "ObjectIdentifier6" text = "{Listado>Departamento}"></ObjectIdentifier>
+                        </cells>
+                    </ColumnListItem>
+                </items>
+                <columns>
+                    <Column id = "Column0" visible="true" width = "6em">
+                        <header>
+                            <Label id = "Label0" text = "Rut" design="Bold"/>
+                        </header>
+                    </Column>
+                    <Column id = "Column1" visible="true" width = "6em">
+                        <header>
+                            <Label id = "Label1" text = "Nombre" design="Bold"/>
+                        </header>
+                    </Column>
+                    <Column id = "Column2" visible="true" width = "5em">
+                        <header>
+                            <Label id = "Label2" text = "Tipo Contrato" design="Bold"/>
+                        </header>
+                    </Column>
+                    <Column id = "Column3" visible="true" width = "5em">
+                        <header>
+                            <Label id = "Label3" text = "Tipo Profesional" design="Bold"/>
+                        </header>
+                    </Column>
+                    <Column id = "Column4" visible="true" width = "4em">
+                        <header>
+                            <Label id = "Label4" text = "Fecha Contratación" design="Bold"/>
+                        </header>
+                    </Column>
+                    <Column id = "Column5" visible="true" width = "8em">
+                        <header>
+                            <Label id = "Label5" text = "Antigüedad" design="Bold"/>
+                        </header>
+                    </Column>
+                    <Column id = "Column6" visible="true" width = "6em">
+                        <header>
+                            <Label id = "Label6" text = "Depto. Principal" design="Bold"/>
+                        </header>
+                    </Column>
+                </columns>
+            </Table>
+        </semantic:content>
+
+        <semantic:titleMainAction>
+            <semantic:TitleMainAction id = "_IDGenTitleMainAction1" text="Limpiar Filtros" press="reiniciarFiltros" />
+        </semantic:titleMainAction>
+    
+    </semantic:SemanticPage>
+</mvc:View>
