@@ -39,9 +39,5 @@
 
 1. Active NodeJS LTS (Long Term Support) version and associated supported NPM version.  (See https://nodejs.org)
 
-
-# Reporte_Saldos_Hono_V2
-# Reporte_Personal_Activo
-# Reporte_Personal_Activo
 # Reporte_Personal_Activo
 # Reporte_Personal_Activo
